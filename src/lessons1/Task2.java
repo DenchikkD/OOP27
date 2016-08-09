@@ -16,7 +16,7 @@ public class Task2 {
 //            writer.write(System.lineSeparator());
 //
 //        }
-        PrintWriter printwriter = new PrintWriter("D:\\progects/OOP/main/FileDirectory/text.txt");// якщо з true то файл дозаписується
+        PrintWriter printwriter = new PrintWriter("D:\\progects/gitTest/OOP27/FileDirectory/text.txt");// якщо з true то файл дозаписується
         for (int i = 0; i < 100; i++) {
             printwriter.println("Hello wordDHDHDHDHDHDH" + i);
             printwriter.flush();
