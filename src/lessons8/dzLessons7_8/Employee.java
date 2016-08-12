@@ -116,4 +116,17 @@ public class Employee {
         result = 31 * result + (middlename != null ? middlename.hashCode() : 0);
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "\nEmployee{" +
+                " surname= '" + surname + '\'' +
+                ", name = '" + name + '\'' +
+                ", middlename = '" + middlename + '\'' +
+                ", sex = '" + sex + '\'' +
+                ", salary = " + salary +
+                ", bankAccount = " + bankAccount +
+                ", department = '" + department + '\'' +
+                '}'+"\n";
+    }
 }

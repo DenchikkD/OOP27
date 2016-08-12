@@ -59,7 +59,7 @@ public class Firma {
                 if (employees.get(i).getName().equalsIgnoreCase(employee.getName()) &&
                         employees.get(i).getSurname().equalsIgnoreCase(employee.getSurname()) &&
                         employees.get(i).getMiddlename().equalsIgnoreCase(employee.getMiddlename())) {
-                    System.out.println(employee.getName());
+//                    System.out.println(employee.getName());
                     return false;
                 }
             }
@@ -68,6 +68,20 @@ public class Firma {
         return true;
     }
 
+    public boolean addEmployeeInTheDepatrment(Department department, Employee employee) {
+        if (department.getEmployeesOfDepartment().size() > 0) {
+            for (int i = 0; i < department.getEmployeesOfDepartment().size(); i++) {
+                if (department.getEmployeesOfDepartment().get(i).getName().equalsIgnoreCase(employee.getName()) &&
+                        department.getEmployeesOfDepartment().get(i).getSurname().equalsIgnoreCase(employee.getSurname()) &&
+                        department.getEmployeesOfDepartment().get(i).getMiddlename().equalsIgnoreCase(employee.getMiddlename())) {
+                    return false;
+                }
+            }
+
+        }
+        department.getEmployeesOfDepartment().add(employee);
+        return true;
+    }
 
 
 }

@@ -12,16 +12,32 @@ import java.util.ArrayList;
  */
 public class Department {
     private String nameDepartment;
-    private ArrayList<Employee> employees;
-    private Manager managerDepartment;
+    private ArrayList<Employee> employeesOfDepartment;
+    private Manager managerDepartment = null;
 
-    public Department(String nameDepartment, ArrayList<Employee> employees, Manager managerDepartment) {
+    public Department(String nameDepartment) {
         this.nameDepartment = nameDepartment;
-        this.employees = employees;
-        this.managerDepartment = managerDepartment;
+        employeesOfDepartment = new ArrayList<>();
     }
 
     public void setManagerDepartment(Manager managerDepartment) {
         this.managerDepartment = managerDepartment;
+    }
+
+    public Manager getManagerDepartment() {
+        return managerDepartment;
+    }
+
+    public ArrayList<Employee> getEmployeesOfDepartment() {
+        return employeesOfDepartment;
+    }
+
+    @Override
+    public String toString() {
+        return "Department{" +
+                "nameDepartment='" + nameDepartment + '\'' +"\n"+
+                ", employeesOfDepartment=" + employeesOfDepartment +
+                ", managerDepartment=" + managerDepartment +
+                '}' + "\n";
     }
 }
