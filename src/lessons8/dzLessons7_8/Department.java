@@ -32,6 +32,10 @@ public class Department {
         return employeesOfDepartment;
     }
 
+    public String getNameDepartment() {
+        return nameDepartment;
+    }
+
     @Override
     public String toString() {
         return "Department{" +

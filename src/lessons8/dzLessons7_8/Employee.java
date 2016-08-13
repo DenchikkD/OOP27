@@ -96,6 +96,10 @@ public class Employee {
         return middlename;
     }
 
+    public String getDepartment() {
+        return department;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

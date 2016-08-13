@@ -83,5 +83,31 @@ public class Firma {
         return true;
     }
 
+    public boolean fireEmployee(String name, String surname, String patronymic) {
+        if (employees.size() > 0) {
+            for (int i = 0; i < employees.size(); i++) {
+                if (employees.get(i).getName().equalsIgnoreCase(name) &&
+                        employees.get(i).getSurname().equalsIgnoreCase(surname) &&
+                        employees.get(i).getMiddlename().equalsIgnoreCase(patronymic)) {
+                    for (int j = 0; j < departments.size() && departments.size() > 0; j++) {
+                        if (departments.get(j).getNameDepartment().equalsIgnoreCase(employees.get(i).getDepartment())) {
+                            for (int k = 0; k < departments.get(j).getEmployeesOfDepartment().size(); k++) {
+                                if (departments.get(j).getEmployeesOfDepartment().get(k).getName().equalsIgnoreCase(name) &&
+                                        departments.get(j).getEmployeesOfDepartment().get(k).getSurname().equalsIgnoreCase(surname) &&
+                                        departments.get(j).getEmployeesOfDepartment().get(k).getMiddlename().equalsIgnoreCase(patronymic)) {
+                                    departments.get(j).getEmployeesOfDepartment().remove(k);
+                                }
+                            }
+                        }
+                    }
+                    System.out.println("чувак уволен" + employees.get(i).toString());
+                    employees.remove(i);
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
 
 }
