@@ -1,6 +1,8 @@
 package lessons8.dzLessons7_8;
 
-import java.util.ArrayList;
+import com.sun.istack.internal.NotNull;
+
+import java.util.*;
 
 /**
  * Created by Denni on 11.08.2016.
@@ -19,7 +21,8 @@ import java.util.ArrayList;
  * (метод ArrayList<Employee> getEmployeesFromDepSortedBySName(String departmentName))
  * -------------------------------------------------------
  * - всем продавцам продать на сумму 10000, (метод void sellFor10())
- * - Выдать всем сотрудникам зарплату (перевести на карточный счет каждого сотрудника, сумму равную зарплате сотрудника с главного счета фирмы, если на счету фирмы не хватает средств - выдать сколько хватит =)) (метод void giveSalaryForAll())
+ * - Выдать всем сотрудникам зарплату (перевести на карточный счет каждого сотрудника, сумму равную зарплате сотрудника с главного счета фирмы,
+ * если на счету фирмы не хватает средств - выдать сколько хватит =)) (метод void giveSalaryForAll())
  * -------------------------------------------------------
  * -* нанять сотрудника, снять с зарплаты сотрудников отдела зарплату для новичка
  * -* после любой изменяющей операции сохранять фирму в файл
@@ -42,8 +45,16 @@ public class Firma {
         departments = new ArrayList<>();
     }
 
-    public ArrayList<Employee> getEmployees() {
+    public ArrayList<Employee> getAllEmployees() {
         return employees;
+    }
+
+    public float getBankAccoutOfTheFirm() {
+        return BankAccoutOfTheFirm;
+    }
+
+    public void setBankAccoutOfTheFirm(float bankAccoutOfTheFirm) {
+        BankAccoutOfTheFirm = bankAccoutOfTheFirm;
     }
 
     public ArrayList<Department> getDepartments() {
@@ -109,5 +120,139 @@ public class Firma {
         return false;
     }
 
+    public boolean setDepartmentForEmployee(String name, String surname, String patronymic, String departmentName) {
+        if (employees.size() > 0) {
+            for (int i = 0; i < employees.size(); i++) {
+                if (employees.get(i).getName().equalsIgnoreCase(name) &&
+                        employees.get(i).getSurname().equalsIgnoreCase(surname) &&
+                        employees.get(i).getMiddlename().equalsIgnoreCase(patronymic)) {
+                    if (departments.size() > 0) {
+                        for (int j = 0; j < departments.size(); j++) {
+                            if (departments.get(j).getNameDepartment().equalsIgnoreCase(departmentName)) {
+                                departments.get(j).getEmployeesOfDepartment().add(employees.get(i));
+                                return true;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return false;
+    }
 
+    public ArrayList<Employee> getAllEmployeesSortedBySalary() {
+        ArrayList<Employee> sortEmployee = new ArrayList<>(employees);
+        Collections.sort(sortEmployee, (o1, o2) -> {
+            if (o1.getSalary() > o2.getSalary()) {
+                return -1;
+            } else if (o1.getSalary() < o2.getSalary()) {
+                return 1;
+            } else return 0;
+
+        });
+        return sortEmployee;
+    }
+
+    public ArrayList<Employee> getAllEmployeesSortedBySName() {
+        ArrayList<Employee> sortEmployee = new ArrayList<>(employees);
+        Collections.sort(sortEmployee, new NameComparator());
+        return sortEmployee;
+    }
+
+    public ArrayList<Employee> getEmployeesFromDep(String departmentName) {
+        if (departments.size() > 0) {
+            for (int i = 0; i < departments.size(); i++) {
+                if (departments.get(i).getNameDepartment().equalsIgnoreCase(departmentName)) {
+                    return departments.get(i).getEmployeesOfDepartment();
+                }
+            }
+        }
+        return null;
+    }
+
+    public ArrayList<Employee> getEmployeesFromDepSortedBySalary(String departmentName) {
+        ArrayList<Employee> sortEmployeesFromDepBySalary = null;
+        if (departments.size() > 0) {
+            for (int i = 0; i < departments.size(); i++) {
+                if (departments.get(i).getNameDepartment().equalsIgnoreCase(departmentName)) {
+                    sortEmployeesFromDepBySalary = new ArrayList<>(departments.get(i).getEmployeesOfDepartment());
+                    Collections.sort(sortEmployeesFromDepBySalary, new SaleryComparator());
+                }
+            }
+        }
+        if (sortEmployeesFromDepBySalary == null) {
+            System.out.println("Department is not found");
+        }
+        return sortEmployeesFromDepBySalary;
+    }
+
+    public ArrayList<Employee> getEmployeesFromDepSortedBySName(String departmentName) {
+        ArrayList<Employee> sortEmployeesFromDepBySname = null;
+        if (departments.size() > 0) {
+            for (int i = 0; i < departments.size(); i++) {
+                if (departments.get(i).getNameDepartment().equalsIgnoreCase(departmentName)) {
+                    sortEmployeesFromDepBySname = new ArrayList<>(departments.get(i).getEmployeesOfDepartment());
+                    Collections.sort(sortEmployeesFromDepBySname, new NameComparator());
+                }
+            }
+        }
+        if (sortEmployeesFromDepBySname == null) {
+            System.out.println("Department is not found");
+        }
+        return sortEmployeesFromDepBySname;
+    }
+
+    public void sellFor10() {
+        if (employees.size() > 0) {
+            for (int i = 0; i < employees.size(); i++) {
+                if (employees.get(i) instanceof Seller) {
+                    employees.get(i).setBankAccount(10_000);
+                    setBankAccoutOfTheFirm(getBankAccoutOfTheFirm() - 10_000);
+                }
+            }
+        }
+    }
+
+    public void giveSalaryForAll() {
+        for (Employee employee : employees) {
+            if (getBankAccoutOfTheFirm() > 0 && getBankAccoutOfTheFirm() >= employee.takeSalary()) {
+                employee.setBankAccount(employee.getBankAccount() + employee.takeSalary());
+                setBankAccoutOfTheFirm(getBankAccoutOfTheFirm() - employee.takeSalary());
+            } else {
+                employee.setBankAccount(getBankAccoutOfTheFirm());
+                setBankAccoutOfTheFirm(0);
+            }
+        }
+    }
+
+    public boolean addANewEmployeeInTheDepartment(Employee employee) {
+        addEmployee(employee);
+        if (departments.size() > 0) {
+            for (int i = 0; i < departments.size(); i++) {
+                if (departments.get(i).getNameDepartment().equalsIgnoreCase(employee.getDepartment())) {
+                    if (departments.get(i).getEmployeesOfDepartment().size() > 0) {
+                        float selectSalary = employee.getSalary() / departments.get(i).getEmployeesOfDepartment().size();
+                        for (int j = 0; j < departments.get(i).getEmployeesOfDepartment().size(); j++) {
+                            departments.get(i).getEmployeesOfDepartment().get(j).setSalary(departments.get(i).getEmployeesOfDepartment().get(j).getSalary() - selectSalary);
+                        }
+                        addEmployeeInTheDepatrment(departments.get(i), employee);
+                        return true;
+                    }
+                }
+
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public String toString() {
+        return "\nFirma{" + "\n" +
+                " nameFirma= ' " + nameFirma + '\'' +
+                ", address= ' " + address + '\'' +
+                ", BankAccoutOfTheFirm = " + BankAccoutOfTheFirm +
+                ", employees = " + employees +
+                ", departments = " + departments +
+                '}';
+    }
 }

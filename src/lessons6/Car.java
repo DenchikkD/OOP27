@@ -5,12 +5,60 @@ package lessons6;
  */
 public class Car {
 
-    String brand;
-    float rashodOneKm;
-    int runing;
-    int tankCapacity;
-    float ostatokInTank;
-    boolean onOff;
+    private String brand;
+    private float rashodOneKm;
+    private int runing;
+    private int tankCapacity;
+    private float ostatokInTank;
+    private boolean onOff;
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
+    public float getRashodOneKm() {
+        return rashodOneKm;
+    }
+
+    public void setRashodOneKm(float rashodOneKm) {
+        this.rashodOneKm = rashodOneKm;
+    }
+
+    public int getRuning() {
+        return runing;
+    }
+
+    public void setRuning(int runing) {
+        this.runing = runing;
+    }
+
+    public int getTankCapacity() {
+        return tankCapacity;
+    }
+
+    public void setTankCapacity(int tankCapacity) {
+        this.tankCapacity = tankCapacity;
+    }
+
+    public float getOstatokInTank() {
+        return ostatokInTank;
+    }
+
+    public void setOstatokInTank(float ostatokInTank) {
+        this.ostatokInTank = ostatokInTank;
+    }
+
+    public boolean isOnOff() {
+        return onOff;
+    }
+
+    public void setOnOff(boolean onOff) {
+        this.onOff = onOff;
+    }
 
     public boolean start() {
         if (ostatokInTank > 0) {

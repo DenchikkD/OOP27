@@ -100,6 +100,22 @@ public class Employee {
         return department;
     }
 
+    public float getSalary() {
+        return salary;
+    }
+
+    public void setSalary(float salary) {
+        this.salary = salary;
+    }
+
+    public void setBankAccount(float bankAccount) {
+        this.bankAccount = bankAccount;
+    }
+
+    public float getBankAccount() {
+        return bankAccount;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -123,7 +139,7 @@ public class Employee {
 
     @Override
     public String toString() {
-        return "\nEmployee{" +
+        return "\nEmployee{" + "\n" +
                 " surname= '" + surname + '\'' +
                 ", name = '" + name + '\'' +
                 ", middlename = '" + middlename + '\'' +
@@ -131,6 +147,11 @@ public class Employee {
                 ", salary = " + salary +
                 ", bankAccount = " + bankAccount +
                 ", department = '" + department + '\'' +
-                '}'+"\n";
+                '}';
     }
+
+    public float takeSalary() {
+        return getSalary();
+    }
+
 }

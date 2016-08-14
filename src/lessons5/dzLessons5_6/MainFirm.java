@@ -9,9 +9,9 @@ public class MainFirm {
         System.out.println(firm.addEmployee("Vova", "Kirov", 3700, 0, "Man", "worker"));
         System.out.println(firm.addEmployee("Vova1", "Kirov", 3800, 0, "Man", "worker"));
         System.out.println(firm.addEmployee("Vova2", "Kirov", 3900, 0, "Man", "worker"));
-        System.out.println(firm.employees.get(0).name);
-        System.out.println(firm.employees.get(1));
-        System.out.println(firm.employees.get(2));
+//        System.out.println(firm.getAllEmployees().get(0).name);
+        System.out.println(firm.getEmployees().get(1));
+        System.out.println(firm.getEmployees().get(2));
 
     }
 }

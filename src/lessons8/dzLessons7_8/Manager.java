@@ -7,7 +7,7 @@ package lessons8.dzLessons7_8;
  * - подчиненный отдел
  */
 public class Manager extends Employee {
-        private String subordinateDepartmentString;
+    private String subordinateDepartmentString;
     private Department subordinateDepartment;
 
 
@@ -23,8 +23,21 @@ public class Manager extends Employee {
     public void setSubordinateDepartment(Department subordinateDepartment) {
         this.subordinateDepartment = subordinateDepartment;
     }
-        public Manager(String surname, String name, String middlename, String sex, float salary, float bankAccount, String department, String subordinateDepartmentString) {
+
+    public Manager(String surname, String name, String middlename, String sex, float salary, float bankAccount, String department, String subordinateDepartmentString) {
         super(surname, name, middlename, sex, salary, bankAccount, department);
         this.subordinateDepartmentString = subordinateDepartmentString;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() +
+                ", subordinateDepartment = " + subordinateDepartment.getNameDepartment()
+                + '}';
+    }
+
+    @Override
+    public float takeSalary() {
+        return getSalary() + 50 * getSubordinateDepartment().getEmployeesOfDepartment().size();
     }
 }

@@ -7,9 +7,13 @@ import java.util.ArrayList;
  */
 public class Firm {
 
-    String nameFirm;
-    int bankAccountOfFirm;
-    ArrayList<Employee> employees;
+    private String nameFirm;
+    private int bankAccountOfFirm;
+    private ArrayList<Employee> employees;
+
+    public ArrayList<Employee> getEmployees() {
+        return employees;
+    }
 
     public Firm(String nameFirm, int bankAccountOfFirm) {
         this.nameFirm = nameFirm;
@@ -25,16 +29,16 @@ public class Firm {
         return true;
     }
 
-    boolean fireEmployee(String name, String surname) {
-
-        for (int i = 0; i < employees.size(); i++) {
-            if (employees.get(i).name.equalsIgnoreCase(name) && employees.get(i).sName.equalsIgnoreCase(surname)) {
-                employees.remove(i);
-                return true;
-            }
-        }
-        return false;
-    }
+//    boolean fireEmployee(String name, String surname) {
+//
+//        for (int i = 0; i < employees.size(); i++) {
+//            if (employees.get(i).name.equalsIgnoreCase(name) && employees.get(i).sName.equalsIgnoreCase(surname)) {
+//                employees.remove(i);
+//                return true;
+//            }
+//        }
+//        return false;
+//    }
 
     ArrayList<Employee> getAllEmployees() {
         return new ArrayList<Employee>(employees);

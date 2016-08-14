@@ -1,0 +1,77 @@
+Mon Aug 15 01:21:56 EEST 2016
+Firma{
+ nameFirma= ' Bud', address= ' Baiker street,221B', BankAccoutOfTheFirm = 210000.0, employees = [
+Employee{
+ surname= 'AKondratuk', name = 'Denis10', middlename = 'Oleksandrovich', sex = 'man', salary = 8900.0, bankAccount = 0.0, department = 'Salers'}, 
+Employee{
+ surname= 'BKondratuk', name = 'Denis1', middlename = 'Oleksandrovich', sex = 'man', salary = 8900.0, bankAccount = 0.0, department = 'Salers'}, 
+Employee{
+ surname= 'CAKondratuk', name = 'Denis21', middlename = 'Oleksandrovich', sex = 'man', salary = 7900.0, bankAccount = 0.0, department = '0.5'}, sale = 150.0}, 
+Employee{
+ surname= 'CZKondratuk', name = 'Denis22', middlename = 'Oleksandrovich', sex = 'man', salary = 8900.0, bankAccount = 0.0, department = '0.5'}, sale = 160.0}, 
+Employee{
+ surname= 'CBKondratuk', name = 'Denis23', middlename = 'Oleksandrovich', sex = 'man', salary = 8900.0, bankAccount = 0.0, department = '0.5'}, sale = 180.0}, 
+Employee{
+ surname= 'DKondratuk', name = 'Denis4', middlename = 'Oleksandrovich', sex = 'man', salary = 8700.0, bankAccount = 0.0, department = '0.7'}, 
+Employee{
+ surname= 'FKondratuk', name = 'Denis5', middlename = 'Oleksandrovich', sex = 'man', salary = 8900.0, bankAccount = 0.0, department = '0.7'}, 
+Employee{
+ surname= 'GKondratuk', name = 'ZDenis6', middlename = 'Oleksandrovich', sex = 'man', salary = 8900.0, bankAccount = 0.0, department = '0.7'}, 
+Employee{
+ surname= 'VKondratuk', name = 'Denis7', middlename = 'Oleksandrovich', sex = 'man', salary = 9800.0, bankAccount = 0.0, department = '0.33'}, 
+Employee{
+ surname= 'XKondratuk', name = 'Denis8', middlename = 'Oleksandrovich', sex = 'man', salary = 10900.0, bankAccount = 0.0, department = '0.33'}, 
+Employee{
+ surname= 'ZKondratuk', name = 'FDenis9', middlename = 'Oleksandrovich', sex = 'man', salary = 8950.0, bankAccount = 0.0, department = '0.33'}, 
+Employee{
+ surname= 'EKondratuk', name = 'Denis0', middlename = 'Oleksandrovich', sex = 'man', salary = 9900.0, bankAccount = 0.0, department = '0.33'}, 
+Employee{
+ surname= 'GKondratuk', name = 'Denis11', middlename = 'Oleksandrovich', sex = 'man', salary = 6700.0, bankAccount = 0.0, department = '0.5'}, 
+Employee{
+ surname= 'Kondratuk', name = 'QDenis12', middlename = 'Oleksandrovich', sex = 'man', salary = 8900.0, bankAccount = 0.0, department = '0.5'}, 
+Employee{
+ surname= 'Kondratuk', name = 'IDenis13', middlename = 'Oleksandrovich', sex = 'man', salary = 8900.0, bankAccount = 0.0, department = '0.5'}, 
+Employee{
+ surname= 'Kondratuk', name = 'Denis01', middlename = 'AOleksandrovich', sex = 'man', salary = 18900.0, bankAccount = 0.0, department = 'Salers'}, subordinateDepartment = 0.5}, 
+Employee{
+ surname= 'Kondratuk', name = 'Denis02', middlename = 'VOleksandrovich', sex = 'man', salary = 17900.0, bankAccount = 0.0, department = 'Salers'}, subordinateDepartment = 0.33}, 
+Employee{
+ surname= 'Kondratuk', name = 'Denis03', middlename = 'BOleksandrovich', sex = 'man', salary = 19900.0, bankAccount = 0.0, department = 'Salers'}, subordinateDepartment = 0.7}], departments = [
+Department{
+nameDepartment = '0.5'
+, employeesOfDepartment = [
+Employee{
+ surname= 'CAKondratuk', name = 'Denis21', middlename = 'Oleksandrovich', sex = 'man', salary = 7900.0, bankAccount = 0.0, department = '0.5'}, sale = 150.0}, 
+Employee{
+ surname= 'CZKondratuk', name = 'Denis22', middlename = 'Oleksandrovich', sex = 'man', salary = 8900.0, bankAccount = 0.0, department = '0.5'}, sale = 160.0}, 
+Employee{
+ surname= 'CBKondratuk', name = 'Denis23', middlename = 'Oleksandrovich', sex = 'man', salary = 8900.0, bankAccount = 0.0, department = '0.5'}, sale = 180.0}, 
+Employee{
+ surname= 'GKondratuk', name = 'Denis11', middlename = 'Oleksandrovich', sex = 'man', salary = 6700.0, bankAccount = 0.0, department = '0.5'}, 
+Employee{
+ surname= 'Kondratuk', name = 'QDenis12', middlename = 'Oleksandrovich', sex = 'man', salary = 8900.0, bankAccount = 0.0, department = '0.5'}, 
+Employee{
+ surname= 'Kondratuk', name = 'IDenis13', middlename = 'Oleksandrovich', sex = 'man', salary = 8900.0, bankAccount = 0.0, department = '0.5'}], managerDepartment = Kondratuk}
+, 
+Department{
+nameDepartment = '0.33'
+, employeesOfDepartment = [
+Employee{
+ surname= 'VKondratuk', name = 'Denis7', middlename = 'Oleksandrovich', sex = 'man', salary = 9800.0, bankAccount = 0.0, department = '0.33'}, 
+Employee{
+ surname= 'XKondratuk', name = 'Denis8', middlename = 'Oleksandrovich', sex = 'man', salary = 10900.0, bankAccount = 0.0, department = '0.33'}, 
+Employee{
+ surname= 'ZKondratuk', name = 'FDenis9', middlename = 'Oleksandrovich', sex = 'man', salary = 8950.0, bankAccount = 0.0, department = '0.33'}, 
+Employee{
+ surname= 'EKondratuk', name = 'Denis0', middlename = 'Oleksandrovich', sex = 'man', salary = 9900.0, bankAccount = 0.0, department = '0.33'}], managerDepartment = Kondratuk}
+, 
+Department{
+nameDepartment = '0.7'
+, employeesOfDepartment = [
+Employee{
+ surname= 'DKondratuk', name = 'Denis4', middlename = 'Oleksandrovich', sex = 'man', salary = 8700.0, bankAccount = 0.0, department = '0.7'}, 
+Employee{
+ surname= 'FKondratuk', name = 'Denis5', middlename = 'Oleksandrovich', sex = 'man', salary = 8900.0, bankAccount = 0.0, department = '0.7'}, 
+Employee{
+ surname= 'GKondratuk', name = 'ZDenis6', middlename = 'Oleksandrovich', sex = 'man', salary = 8900.0, bankAccount = 0.0, department = '0.7'}], managerDepartment = Kondratuk}
+]}

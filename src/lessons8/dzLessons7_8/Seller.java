@@ -10,4 +10,16 @@ public class Seller extends Employee {
         super(surname, name, middlename, sex, salary, bankAccount, department);
         this.sale = sale;
     }
+
+    @Override
+    public String toString() {
+        return super.toString() +
+                ", sale = " + sale
+                + '}';
+    }
+
+    @Override
+    public float takeSalary() {
+        return getSalary() + sale * 0.3f;
+    }
 }

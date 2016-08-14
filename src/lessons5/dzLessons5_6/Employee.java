@@ -5,12 +5,12 @@ package lessons5.dzLessons5_6;
  */
 public class Employee {
 
-    String name;
-    String sName;
-    int price;
-    int bankAccount;
-    String sex;
-    String department;
+    private String name;
+    private String sName;
+    private int price;
+    private int bankAccount;
+    private String sex;
+    private String department;
 
     public Employee(String name, String sName, int price, int bankAccount, String sex, String department) {
         this.name = name;

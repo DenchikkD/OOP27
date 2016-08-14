@@ -38,10 +38,10 @@ public class Department {
 
     @Override
     public String toString() {
-        return "Department{" +
-                "nameDepartment='" + nameDepartment + '\'' +"\n"+
-                ", employeesOfDepartment=" + employeesOfDepartment +
-                ", managerDepartment=" + managerDepartment +
+        return "\nDepartment{" + "\n" +
+                "nameDepartment = '" + nameDepartment + '\'' + "\n" +
+                ", employeesOfDepartment = " + employeesOfDepartment +
+                ", managerDepartment = " + managerDepartment.getSurname() +
                 '}' + "\n";
     }
 }
