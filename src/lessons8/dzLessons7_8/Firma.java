@@ -206,8 +206,7 @@ public class Firma {
         if (employees.size() > 0) {
             for (int i = 0; i < employees.size(); i++) {
                 if (employees.get(i) instanceof Seller) {
-                    employees.get(i).setBankAccount(10_000);
-                    setBankAccoutOfTheFirm(getBankAccoutOfTheFirm() - 10_000);
+                ((Seller) employees.get(i)).setSale(((Seller) employees.get(i)).getSale() + 10_000);
                 }
             }
         }

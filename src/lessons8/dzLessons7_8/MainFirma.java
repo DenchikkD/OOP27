@@ -87,9 +87,9 @@ public class MainFirma {
 //        System.out.println(firma.getEmployeesFromDep("0.33"));
 //        System.out.println(firma.getEmployeesFromDepSortedBySalary("0.33"));
 //        System.out.println(firma.getEmployeesFromDepSortedBySName("0.33"));
-//        System.out.println(firma.getBankAccoutOfTheFirm());
+//        System.out.println(firma.getAllEmployees());
 //        firma.sellFor10();
-//        System.out.println(firma.getBankAccoutOfTheFirm());
+//        System.out.println(firma.getAllEmployees());
 //        firma.giveSalaryForAll();
 //        System.out.println(firma.getAllEmployees());
 //        System.out.println(firma.getBankAccoutOfTheFirm());
@@ -97,8 +97,11 @@ public class MainFirma {
 //        System.out.println(firma.addANewEmployeeInTheDepartment(new Employee("Vova","Vova","Vova","man",5000,0,"0.555")));
 //        System.out.println(firma.getAllEmployees());
 //        System.out.println(firma);
-        SaveFirma.saveFirma("D:\\progects/gitTest/OOP27/FileDirectory/saveFirma.txt",firma);
+//        SaveFirma.saveFirma("D:\\progects/gitTest/OOP27/FileDirectory/saveFirma.txt",firma);
 
 //        System.out.println(new Date(System.currentTimeMillis()));
+        ConsolMenu consolMenu = new ConsolMenu(firma);
+        consolMenu.start();
+
     }
 }

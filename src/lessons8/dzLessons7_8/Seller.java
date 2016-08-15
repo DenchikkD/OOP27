@@ -22,4 +22,12 @@ public class Seller extends Employee {
     public float takeSalary() {
         return getSalary() + sale * 0.3f;
     }
+
+    public float getSale() {
+        return sale;
+    }
+
+    public void setSale(float sale) {
+        this.sale = sale;
+    }
 }
