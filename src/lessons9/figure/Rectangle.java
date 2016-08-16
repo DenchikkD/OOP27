@@ -3,7 +3,7 @@ package lessons9.figure;
 /**
  * Created by Denni on 15.08.2016.
  */
-public class Rectangle extends Figure {
+public class Rectangle extends AbstractFigure {
     private double a;
     private double b;
 
@@ -20,5 +20,10 @@ public class Rectangle extends Figure {
     @Override
     public double perim() {
         return 2*a+2*b;
+    }
+
+    @Override
+    public String getName() {
+        return "Rectangle ;)";
     }
 }

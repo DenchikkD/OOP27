@@ -3,10 +3,11 @@ package lessons9.figure;
 /**
  * Created by Denni on 15.08.2016.
  */
-public class Circle extends Figure {
+public class Circle extends AbstractFigure {
     private double a;
 
     public Circle(double a) {
+
         this.a = a;
     }
 
@@ -20,4 +21,7 @@ public class Circle extends Figure {
         return 2 * Math.PI * a;
     }
 
+//    public String getName(){
+//        return "Circle)";
+//    }
 }

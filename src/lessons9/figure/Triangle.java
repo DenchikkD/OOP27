@@ -3,7 +3,7 @@ package lessons9.figure;
 /**
  * Created by Denni on 15.08.2016.
  */
-public class Triangle extends Figure{
+public class Triangle extends AbstractFigure {
     private double a;
     private double b;
 
@@ -20,6 +20,11 @@ public class Triangle extends Figure{
 
     @Override
     public double perim() {
-        return super.perim();
+        return 0;
+    }
+
+    @Override
+    public String getName() {
+        return "Triangle :)";
     }
 }
