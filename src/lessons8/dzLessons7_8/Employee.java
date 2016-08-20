@@ -1,5 +1,7 @@
 package lessons8.dzLessons7_8;
 
+import java.util.Comparator;
+
 /**
  * Created by Denni on 11.08.2016.
  * класс фирма (Firm), содержащий имя, адрес, главный счет (сумма), список отрудников, список отделов.
@@ -66,6 +68,8 @@ package lessons8.dzLessons7_8;
 //        - Отдел
 public class Employee {
 
+    public static final Comparator<Employee> BY_AGE = (p1, p2) -> Float.compare(p1.salary, p2.salary);
+
     private String surname;
     private String name;
     private String middlename;
@@ -82,6 +86,10 @@ public class Employee {
         this.salary = salary;
         this.bankAccount = bankAccount;
         this.department = department;
+    }
+
+    public String getSex() {
+        return sex;
     }
 
     public String getSurname() {
