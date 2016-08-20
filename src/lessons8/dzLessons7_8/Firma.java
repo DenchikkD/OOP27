@@ -1,6 +1,7 @@
 package lessons8.dzLessons7_8;
 
-import com.sun.istack.internal.NotNull;
+import lessons8.dzLessons7_8.comparators.NameComparator;
+import lessons8.dzLessons7_8.comparators.SaleryComparator;
 
 import java.util.*;
 
