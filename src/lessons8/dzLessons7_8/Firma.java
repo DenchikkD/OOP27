@@ -255,17 +255,11 @@ public class Firma {
         for (int i = 0; i < comparatorsList.size(); i++) {
             System.out.println("Нажміть " + i + " щоб " + comparatorsList.get(i));
         }
-//        System.out.println("Нажміть " + comparatorsList.size() + " щоб завершити вибір");
-
         int res = scn.nextInt();
         if (res == comparatorsList.size()-1) {
             return comparatorsList.get(res);
         }
-        Comparator<Employee> comp = comparatorsList.get(res);
-        comparatorsList.remove(res);
-
-        return comp.thenComparing(changeComparator(comparatorsList));
-
+        return comparatorsList.remove(res).thenComparing(changeComparator(comparatorsList));
     }
 
     @Override
