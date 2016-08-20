@@ -1,7 +1,6 @@
 package lessons8.dzLessons7_8;
 
-import lessons8.dzLessons7_8.comparators.NameComparator;
-import lessons8.dzLessons7_8.comparators.SaleryComparator;
+import lessons8.dzLessons7_8.comparators.*;
 
 import java.util.*;
 
@@ -32,11 +31,13 @@ import java.util.*;
  * * класс фирма (Firm), содержащий имя, адрес, главный счет (сумма), список отрудников, список отделов.
  */
 public class Firma {
+    public static final Scanner scn = new Scanner(System.in);
     private String nameFirma;
     private String address;
     private float BankAccoutOfTheFirm;
     private ArrayList<Employee> employees;
     private ArrayList<Department> departments;
+    private LinkedList<Comparator<Employee>> comparatorsList;
 
     public Firma(String nameFirma, String address, float bankAccoutOfTheFirm) {
         this.nameFirma = nameFirma;
@@ -44,6 +45,11 @@ public class Firma {
         this.BankAccoutOfTheFirm = bankAccoutOfTheFirm;
         employees = new ArrayList<>();
         departments = new ArrayList<>();
+        comparatorsList = new LinkedList<>();
+    }
+
+    public LinkedList<Comparator<Employee>> getComparatorsList() {
+        return comparatorsList;
     }
 
     public ArrayList<Employee> getAllEmployees() {
@@ -207,7 +213,7 @@ public class Firma {
         if (employees.size() > 0) {
             for (int i = 0; i < employees.size(); i++) {
                 if (employees.get(i) instanceof Seller) {
-                ((Seller) employees.get(i)).setSale(((Seller) employees.get(i)).getSale() + 10_000);
+                    ((Seller) employees.get(i)).setSale(((Seller) employees.get(i)).getSale() + 10_000);
                 }
             }
         }
@@ -243,6 +249,23 @@ public class Firma {
             }
         }
         return false;
+    }
+
+    public Comparator<Employee> changeComparator(LinkedList<Comparator<Employee>> comparatorsList) {
+        for (int i = 0; i < comparatorsList.size(); i++) {
+            System.out.println("Нажміть " + i + " щоб " + comparatorsList.get(i));
+        }
+//        System.out.println("Нажміть " + comparatorsList.size() + " щоб завершити вибір");
+
+        int res = scn.nextInt();
+        if (res == comparatorsList.size()-1) {
+            return comparatorsList.get(res);
+        }
+        Comparator<Employee> comp = comparatorsList.get(res);
+        comparatorsList.remove(res);
+
+        return comp.thenComparing(changeComparator(comparatorsList));
+
     }
 
     @Override

@@ -8,6 +8,13 @@ import java.util.Comparator;
  * Created by Denni on 14.08.2016.
  */
 public class NameComparator implements Comparator<Employee> {
+
+
+    @Override
+    public String toString() {
+        return "відсортувати список за іменем";
+    }
+
     @Override
     public int compare(Employee o1, Employee o2) {
 //        if ((o1.getSurname().compareToIgnoreCase(o2.getSurname())) > 0) {
@@ -30,5 +37,7 @@ public class NameComparator implements Comparator<Employee> {
 //            }
 //        }
         return o1.getName().compareToIgnoreCase(o2.getName());
+
     }
+
 }

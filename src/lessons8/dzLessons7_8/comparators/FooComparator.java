@@ -5,17 +5,16 @@ import lessons8.dzLessons7_8.Employee;
 import java.util.Comparator;
 
 /**
- * Created by Denni on 14.08.2016.
+ * Created by Denni on 20.08.2016.
  */
-public class SaleryComparator  implements Comparator<Employee> {
-
+public class FooComparator implements Comparator<Employee> {
     @Override
     public int compare(Employee o1, Employee o2) {
-        return Float.compare(o1.getSalary(), o2.getSalary());
+        return 0;
     }
 
     @Override
     public String toString() {
-        return "відсортувати список за зарплатою";
+        return "Завершити вибір";
     }
 }

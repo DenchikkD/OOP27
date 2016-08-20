@@ -1,12 +1,11 @@
 package lessons8.dzLessons7_8;
 
+import lessons8.dzLessons7_8.comparators.*;
 import sun.util.calendar.BaseCalendar;
 import sun.util.calendar.LocalGregorianCalendar;
 
 import java.io.IOException;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
+import java.util.*;
 
 /**
  * Created by Denni on 11.08.2016.
@@ -29,11 +28,11 @@ public class MainFirma {
         Employee employee9 = new Employee("ZKondratuk", "FDenis9", "Oleksandrovich", "man", 8950, 0, "0.33");
         Employee employee10 = new Employee("EKondratuk", "Denis0", "Oleksandrovich", "man", 9900, 0, "0.33");
         Employee employee11 = new Employee("GKondratuk", "Denis11", "Oleksandrovich", "man", 6700, 0, "0.5");
-        Employee employee12 = new Employee("Kondratuk", "QDenis12", "Oleksandrovich", "man", 8900, 0, "0.5");
-        Employee employee13 = new Employee("Kondratuk", "IDenis13", "Oleksandrovich", "man", 8900, 0, "0.5");
-        Manager manager1 = new Manager("Kondratuk", "Denis01", "AOleksandrovich", "man", 18900, 0, "Salers", "0.5");
-        Manager manager2 = new Manager("Kondratuk", "Denis02", "VOleksandrovich", "man", 17900, 0, "Salers", "0.33");
-        Manager manager3 = new Manager("Kondratuk", "Denis03", "BOleksandrovich", "man", 19900, 0, "Salers", "0.7");
+        Employee employee12 = new Employee("Kondratuk", "ADenis12", "Oleksandrovich", "man", 8900, 0, "0.5");
+        Employee employee13 = new Employee("Kondratuk", "BDenis13", "Oleksandrovich", "man", 8900, 0, "0.5");
+        Manager manager1 = new Manager("Kondratuk", "ADenis01", "AOleksandrovich", "man", 18900, 0, "Salers", "0.5");
+        Manager manager2 = new Manager("Kondratuk", "BDenis02", "VOleksandrovich", "man", 17900, 0, "Salers", "0.33");
+        Manager manager3 = new Manager("Kondratuk", "CDenis03", "BOleksandrovich", "man", 19900, 0, "Salers", "0.7");
         Department department1 = new Department("0.5");
         manager1.setSubordinateDepartment(department1);
         Department department2 = new Department("0.33");
@@ -100,8 +99,21 @@ public class MainFirma {
 //        SaveFirma.saveFirma("D:\\progects/gitTest/OOP27/FileDirectory/saveFirma.txt",firma);
 
 //        System.out.println(new Date(System.currentTimeMillis()));
-        ConsolMenu consolMenu = new ConsolMenu(firma);
-        consolMenu.start();
+        DepartmentComparator departmentComparator = new DepartmentComparator();
+
+        firma.getComparatorsList().add(departmentComparator);
+        firma.getComparatorsList().add(new MiddlenameComparator());
+        firma.getComparatorsList().add(new NameComparator());
+        firma.getComparatorsList().add(new SaleryComparator());
+        firma.getComparatorsList().add(new SexComparator());
+        firma.getComparatorsList().add(new SurNameComparator());
+        firma.getComparatorsList().add(new FooComparator());
+        System.out.println(firma.getAllEmployees());
+        Collections.sort(firma.getAllEmployees(),firma.changeComparator(new LinkedList<Comparator<Employee>>(firma.getComparatorsList())));
+        System.out.println(firma.getAllEmployees());
+
+//        ConsolMenu consolMenu = new ConsolMenu(firma);
+//        consolMenu.start();
 
     }
 }
