@@ -257,7 +257,7 @@ public class Firma {
         }
         int res = scn.nextInt();
 
-        if (res == comparatorsList.size()-1) {
+        if (res == comparatorsList.size() - 1) {
             return comparatorsList.get(res);
         }
         return comparatorsList.remove(res).thenComparing(changeComparator(comparatorsList));
