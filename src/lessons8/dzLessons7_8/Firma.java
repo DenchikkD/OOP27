@@ -256,6 +256,7 @@ public class Firma {
             System.out.println("Нажміть " + i + " щоб " + comparatorsList.get(i));
         }
         int res = scn.nextInt();
+
         if (res == comparatorsList.size()-1) {
             return comparatorsList.get(res);
         }
