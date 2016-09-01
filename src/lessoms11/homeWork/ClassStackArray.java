@@ -22,8 +22,8 @@ public class ClassStackArray implements Stack {
 
     @Override
     public boolean push(int element) {
-        if (hesd <= maxSize) {
-            array[hesd++] = element;
+        if (tail < maxSize) {
+            array[tail++] = element;
             size++;
             return true;
         }
@@ -34,7 +34,7 @@ public class ClassStackArray implements Stack {
     @Override
     public Integer pop() {
         int res = take();
-        tail++;
+        tail--;
         size--;
         return res;
     }
@@ -42,9 +42,9 @@ public class ClassStackArray implements Stack {
     @Override
     public Integer take() {
         if (!isEmpty()) {
-            return array[tail];
+            return array[size - 1];
         }
-        return null;
+        return 0;
     }
 
     @Override
@@ -54,9 +54,6 @@ public class ClassStackArray implements Stack {
 
     @Override
     public boolean isEmpty() {
-        if (size == 0) {
-            return true;
-        }
-        return false;
+        return size == 0;
     }
 }
