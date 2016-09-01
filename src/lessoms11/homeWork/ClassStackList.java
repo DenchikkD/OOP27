@@ -42,7 +42,7 @@ public class ClassStackList implements Stack {
                 head = tail = null;
             }
             size--;
-            return element;
+//            return element;
         }
         return element;
     }
