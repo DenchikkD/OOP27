@@ -1,37 +1,27 @@
 package lessoms11.homeWork;
 
+import lessoms11.homeWork.queue.QueueCollections;
+
 /**
  * Created by Iliren on 01.09.2016.
  */
 public class MainCollections {
     public static void main(String[] args) {
-        LinkedStack stackList = new LinkedStack();
-        System.out.println(stackList.isEmpty());
-        System.out.println(stackList.push(2));
-        System.out.println(stackList.isEmpty());
-        System.out.println(stackList.push(12));
-        System.out.println(stackList.push(22));
-        System.out.println(stackList.push(23));
-        System.out.println(stackList.take());
-        System.out.println(stackList.take());
-        System.out.println(stackList.pop());
-        System.out.println(stackList.size());
-
-        System.out.println(stackList.take());
-        System.out.println(stackList.pop());
-        System.out.println(stackList.size());
-
-        System.out.println(stackList.take());
-        System.out.println(stackList.pop());
-        System.out.println(stackList.size());
-
-        System.out.println(stackList.take());
-        System.out.println(stackList.pop());
-        System.out.println(stackList.size());
-
-        System.out.println(stackList.take());
-        System.out.println(stackList.pop());
-        System.out.println(stackList.size());
+        QueueCollections queueCollections = new QueueCollections();
+        System.out.println(queueCollections.size());
+        System.out.println(queueCollections.isEmpty());
+        System.out.println(queueCollections.take());
+        System.out.println(queueCollections.push(10));
+        System.out.println(queueCollections.push(15));
+        System.out.println(queueCollections.take());
+        System.out.println(queueCollections.pop());
+        System.out.println(queueCollections.size());
+        System.out.println(queueCollections.take());
+        System.out.println(queueCollections.pop());
+        System.out.println(queueCollections.size());
+        System.out.println(queueCollections.push(5));
+        System.out.println(queueCollections.take());
+        System.out.println(queueCollections.pop());
 
     }
 

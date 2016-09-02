@@ -17,17 +17,39 @@ public class QueueCollections implements Queue {
 
     @Override
     public boolean push(int element) {
-        return false;
+        Node node = new Node(element);
+        if (head != null) {
+            tail.next = node;
+            tail = node;
+        } else {
+            head = tail = node;
+        }
+        size++;
+        return true;
     }
 
     @Override
     public Integer pop() {
-        return null;
+        Integer element = null;
+        if (head != tail) {
+            element = take();
+            head = head.next;
+            size--;
+        } else {
+            element = take();
+            head = tail = null;
+            size--;
+        }
+
+        return element;
     }
 
     @Override
     public Integer take() {
-        return head.value;
+        if (!isEmpty()) {
+            return head.value;
+        }
+        return null;
     }
 
     @Override
