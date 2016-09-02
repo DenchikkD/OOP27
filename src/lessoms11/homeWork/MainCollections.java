@@ -23,6 +23,7 @@ public class MainCollections {
         System.out.println(queueCollections.take());
         System.out.println(queueCollections.pop());
 
+
     }
 
 }
