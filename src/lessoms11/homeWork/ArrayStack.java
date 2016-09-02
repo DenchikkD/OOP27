@@ -3,7 +3,7 @@ package lessoms11.homeWork;
 /**
  * Created by Denni on 29.08.2016.
  */
-public class ClassStackArray implements Stack {
+public class ArrayStack implements Stack {
 
     private int maxSize;
     private int[] array;
@@ -11,7 +11,7 @@ public class ClassStackArray implements Stack {
     private int hesd;
     private int tail;
 
-    public ClassStackArray(int maxSize) {
+    public ArrayStack(int maxSize) {
         this.maxSize = maxSize;
         array = new int[maxSize];
         size = 0;

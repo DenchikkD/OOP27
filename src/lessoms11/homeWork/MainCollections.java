@@ -5,7 +5,7 @@ package lessoms11.homeWork;
  */
 public class MainCollections {
     public static void main(String[] args) {
-        ClassStackList stackList = new ClassStackList();
+        LinkedStack stackList = new LinkedStack();
         System.out.println(stackList.isEmpty());
         System.out.println(stackList.push(2));
         System.out.println(stackList.isEmpty());

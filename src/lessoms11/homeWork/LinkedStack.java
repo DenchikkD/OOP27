@@ -3,57 +3,48 @@ package lessoms11.homeWork;
 /**
  * Created by Denni on 31.08.2016.
  */
-public class ClassStackList implements Stack {
+public class LinkedStack implements Stack {
 
-    private Node tail;
-    private Node head;
     private int size;
+    private Node tail;
 
-    public ClassStackList() {
+    public LinkedStack() {
         size = 0;
     }
+
 
     @Override
     public boolean push(int element) {
         Node node = new Node(element);
-        if (size > 0) {
-            node.next = tail;
-            tail = node;
-
-        } else {
-            head = tail = node;
-
-
-        }
+        node.next = tail;
+        tail = node;
         size++;
         return true;
-
     }
 
     @Override
     public Integer pop() {
-        Integer element = null;
         if (!isEmpty()) {
-            if (tail != null & tail.next != null) {
-                element = tail.value;
+            Integer element = take();
+            if (tail.next != null) {
                 tail = tail.next;
             } else {
-                element = tail.value;
-                head = tail = null;
+                tail = null;
             }
             size--;
-//            return element;
+            return element;
         }
-        return element;
+        return null;
     }
+
 
     @Override
     public Integer take() {
-        if (!isEmpty()) {
-            return tail.value;
-
+        Integer element = null;
+        if (size != 0) {
+            element = tail.value;
         }
-        return null;
+        return element;
     }
 
     @Override
