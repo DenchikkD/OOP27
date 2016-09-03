@@ -2,6 +2,9 @@ package lessoms11.homeWork;
 
 import lessoms11.homeWork.queue.QueueCollections;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
+
 /**
  * Created by Iliren on 01.09.2016.
  */
@@ -22,6 +25,7 @@ public class MainCollections {
         System.out.println(queueCollections.push(5));
         System.out.println(queueCollections.take());
         System.out.println(queueCollections.pop());
+
 
 
     }
