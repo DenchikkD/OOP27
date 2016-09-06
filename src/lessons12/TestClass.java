@@ -1,5 +1,6 @@
 package lessons12;
 
+import java.util.Date;
 import java.util.DoubleSummaryStatistics;
 import java.util.Formatter;
 
@@ -12,16 +13,17 @@ public class TestClass {
         Integer i2 = 10;
         Double d1 = 1.5;
         Double d2 = 1.5;
-        System.out.println(d1==d2);
-        byte b =0;
-        while (++b>0){
+        System.out.println(d1 == d2);
+        byte b = 0;
+        while (++b > 0) {
 //            System.out.println(b);
         }
         System.out.println(b);
 
         Formatter formatter = new Formatter();
-        formatter.format("%.0f",Math.pow(2,100));
+        formatter.format("%.0f", Math.pow(2, 100));
         System.out.println(formatter);
+        System.out.println(String.format("%tc",new Date()));
 
     }
 
