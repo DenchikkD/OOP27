@@ -3,12 +3,12 @@ package lessoms11.homeWork;
 /**
  * Created by Denni on 22.08.2016.
  */
-public interface Queue {
-    boolean push(int element);
+public interface Queue<T> {
+    boolean push(T element);
 
-    Integer pop();
+    T pop();
 
-    Integer take();
+    T take();
 
     int size();
 

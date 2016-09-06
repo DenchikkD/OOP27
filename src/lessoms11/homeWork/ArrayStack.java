@@ -3,25 +3,24 @@ package lessoms11.homeWork;
 /**
  * Created by Denni on 29.08.2016.
  */
-public class ArrayStack implements Stack {
+public class ArrayStack<E> implements Stack<E> {
 
     private int maxSize;
-    private int[] array;
+    private E[] array;
     private int size;
-    private int hesd;
     private int tail;
 
     public ArrayStack(int maxSize) {
         this.maxSize = maxSize;
-        array = new int[maxSize];
+        array = (E[]) new Object[maxSize];
         size = 0;
-        hesd = 0;
+
         tail = 0;
     }
 
 
     @Override
-    public boolean push(int element) {
+    public boolean push(E element) {
         if (tail < maxSize) {
             array[tail++] = element;
             size++;
@@ -32,19 +31,19 @@ public class ArrayStack implements Stack {
 
 
     @Override
-    public Integer pop() {
-        int res = take();
+    public E pop() {
+        E res = take();
         tail--;
         size--;
         return res;
     }
 
     @Override
-    public Integer take() {
+    public E take() {
         if (!isEmpty()) {
             return array[size - 1];
         }
-        return 0;
+        return null;
     }
 
     @Override

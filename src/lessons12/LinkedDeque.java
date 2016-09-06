@@ -2,14 +2,17 @@ package lessons12;
 
 import java.util.function.Consumer;
 import java.util.function.Function;
+import java.util.jar.Pack200;
+
+import static javafx.scene.input.KeyCode.O;
 
 /**
  * Created by Denni on 01.09.2016.
  */
-public class LinkedDeque implements Deque {
+public class LinkedDeque<E> implements Deque<E> {
 
-    private Node first;
-    private Node last;
+    private Node<E> first;
+    private Node<E> last;
     private int size;
 
     public LinkedDeque() {
@@ -17,12 +20,12 @@ public class LinkedDeque implements Deque {
     }
 
     @Override
-    public boolean pushFirst(int elem) {
+    public boolean pushFirst(E elem) {
 
         if (size == 0) {
-            last = first = new Node(elem);
+            last = first = new Node<>(elem);
         } else {
-            Node node = new Node(elem);
+            Node<E> node = new Node<E>(elem);
             node.next = first;
             first.prev = node;
             first = node;
@@ -32,7 +35,7 @@ public class LinkedDeque implements Deque {
     }
 
     @Override
-    public boolean pushLast(int elem) {
+    public boolean pushLast(E elem) {
         if (size == 0) {
             last = first = new Node(elem);
         } else {
@@ -46,9 +49,9 @@ public class LinkedDeque implements Deque {
     }
 
     @Override
-    public Integer popFirst() {
+    public E popFirst() {
         if (!isEmpty()) {
-            int elem = first.val;
+            E elem = (E) first.val;
             if (first == last) {
                 first = last = null;
             } else {
@@ -62,9 +65,9 @@ public class LinkedDeque implements Deque {
     }
 
     @Override
-    public Integer popLast() {
+    public E popLast() {
         if (!isEmpty()) {
-            int elem = last.val;
+            E elem = (E) last.val;
             if (last == first) {
                 last = first = null;
             } else {
@@ -78,17 +81,17 @@ public class LinkedDeque implements Deque {
     }
 
     @Override
-    public Integer ptakeFirst() {
+    public E ptakeFirst() {
         if (!isEmpty()) {
-            return first.val;
+            return (E) first.val;
         }
         return null;
     }
 
     @Override
-    public Integer takeLast() {
+    public E takeLast() {
         if (!isEmpty()) {
-            return last.val;
+            return (E) last.val;
         }
         return null;
     }
@@ -108,45 +111,46 @@ public class LinkedDeque implements Deque {
 //
 //}
     //nested class
-    static class Node {
-        Node next;
-        Node prev;
-        int val;
+    static class Node<U> {
+        Node<U> next;
+        Node<U> prev;
+        U val;
 
-        public Node(int val) {
+        public Node(U val) {
             this.val = val;
         }
 
         // из  нестед класа игнорируя
-        public Node(Node next, Node prev, int val) {
+        public Node(Node<U> next, Node<U> prev, U val) {
             this.next = next;
             this.prev = prev;
             this.val = val;
         }
     }
 
-    public void forEachFirst(Consumer<Integer> cons) {
+    public void forEachFirst(Consumer<E> cons) {
         for (Node nd = first; nd != null; nd = nd.next) {
-            cons.accept(nd.val);
+            cons.accept((E) nd.val);
         }
 
     }
 
-    public void forEachLast(Consumer<Integer> cons) {
+    public void forEachLast(Consumer<E> cons) {
         System.out.println();
         for (Node nd = last; nd != null; nd = nd.prev) {
-            cons.accept(nd.val);
+            cons.accept((E) nd.val);
         }
 
     }
 
     //*
-    public Deque map(Function<Integer, Integer> mapper) {
-//        LinkedDeque linkedDeque = this;
-        for (Node nd = first; nd != null; nd = nd.next) {
-            nd.val = mapper.apply(nd.val);
+    public <V> Deque<V> map(Function<E, V> mapper) {
+        Deque<V> res = new LinkedDeque<>();
+        for (Node<E> nd = first; nd != null; nd = nd.next) {
+            res.pushLast(mapper.apply(nd.val));
+
         }
-        return this;
+        return res;
     }
 
 

@@ -6,9 +6,9 @@ import lessoms11.homeWork.Queue;
 /**
  * Created by Iliren on 01.09.2016.
  */
-public class QueueCollections implements Queue {
-    private Node head;
-    private Node tail;
+public class QueueCollections<E> implements Queue<E> {
+    private Node<E> head;
+    private Node<E> tail;
     private int size;
 
     public QueueCollections() {
@@ -16,8 +16,8 @@ public class QueueCollections implements Queue {
     }
 
     @Override
-    public boolean push(int element) {
-        Node node = new Node(element);
+    public boolean push(E element) {
+        Node<E> node = new Node<E>(element);
         if (head != null) {
             tail.next = node;
             tail = node;
@@ -29,8 +29,8 @@ public class QueueCollections implements Queue {
     }
 
     @Override
-    public Integer pop() {
-        Integer element = null;
+    public E pop() {
+        E element = null;
         if (head != tail) {
             element = take();
             head = head.next;
@@ -45,7 +45,7 @@ public class QueueCollections implements Queue {
     }
 
     @Override
-    public Integer take() {
+    public E take() {
         if (!isEmpty()) {
             return head.value;
         }

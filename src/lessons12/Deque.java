@@ -3,20 +3,20 @@ package lessons12;
 /**
  * Created by Denni on 01.09.2016.
  */
-public interface Deque {
+public interface Deque<T> {
 
 
-    boolean pushFirst(int elem);
+    boolean pushFirst(T elem);
 
-    boolean pushLast(int elem);
+    boolean pushLast(T elem);
 
-    Integer popFirst();
+    T popFirst();
 
-    Integer popLast();
+    T popLast();
 
-    Integer ptakeFirst();
+    T ptakeFirst();
 
-    Integer takeLast();
+    T takeLast();
 
     public int size();
 
