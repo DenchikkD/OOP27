@@ -129,7 +129,14 @@ public class ArrayList<T> implements List<T> {
 
     @Override
     public int lastIndexOf(T o) {
-        return 0;
+        if (!isEmpty()) {
+            for (int i = size - 1; i >= 0; i--) {
+                if (array[i].equals(o)) {
+                    return i;
+                }
+            }
+        }
+        return -1;
     }
 
     @Override
