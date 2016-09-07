@@ -1,6 +1,7 @@
 package lessons13.arrayList;
 
 import com.sun.istack.internal.NotNull;
+import junit.framework.Assert;
 import lessons13.List;
 
 import java.util.Arrays;
@@ -47,31 +48,60 @@ public class ArrayList<T> implements List<T> {
 
     @Override
     public void add(int idx, T element) {
-
+        if (checkIndex(idx - 1)) {
+            if (size == array.length) {
+                array = newArray(array);
+                shiftRight(idx);
+                array[idx] = element;
+            } else {
+                shiftRight(idx);
+                array[idx] = element;
+            }
+            size++;
+        }
     }
 
     @Override
     public T get(int idx) {
-        return null;
+        checkIndex(idx);
+        return array[idx];
+
     }
 
     @Override
     public T set(int idx, T element) {
-        return null;
+        checkIndex(idx);
+        T delElement = array[idx];
+        array[idx] = element;
+        return delElement;
     }
 
     @Override
     public T remove(int idx) {
-        return null;
+        checkIndex(idx);
+        T delElement = array[idx];
+        shiftLeft(idx);
+        size--;
+        return delElement;
     }
 
     @Override
     public boolean remove(T o) {
+
+        if (!isEmpty()) {
+            for (int i = 0; i < size; i++) {
+                if (array[i].equals(o)) {
+                    shiftLeft(i);
+                    size--;
+                    return true;
+                }
+            }
+        }
         return false;
     }
 
     @Override
-    public void removeIf(Predicate prd) {
+    public void removeIf(Predicate pred) {
 
     }
 
@@ -87,7 +117,14 @@ public class ArrayList<T> implements List<T> {
 
     @Override
     public int indexOf(T o) {
-        return 0;
+        if (!isEmpty()) {
+            for (int i = 0; i < size; i++) {
+                if (array[i].equals(o)) {
+                    return i;
+                }
+            }
+        }
+        return -1;
     }
 
     @Override
@@ -97,6 +134,9 @@ public class ArrayList<T> implements List<T> {
 
     @Override
     public boolean contains(T o) {
+        if (indexOf(o) >= 0) {
+            return true;
+        }
         return false;
     }
 
@@ -122,12 +162,12 @@ public class ArrayList<T> implements List<T> {
 
     @Override
     public int size() {
-        return 0;
+        return size;
     }
 
     @Override
     public boolean isEmpty() {
-        return false;
+        return size == 0;
     }
 
     @Override
@@ -136,12 +176,41 @@ public class ArrayList<T> implements List<T> {
     }
 
     private T[] newArray(T[] array) {
-
-        return Arrays.copyOf(array, array.length * 3 / 2 + 1);
+//        System.out.println((array.length * 3) / 2 + 1);
+        return Arrays.copyOf(array, (array.length * 3) / 2 + 1);
     }
 
-    private void shiftRight(int idx){
+    private void shiftRight(int idx) {
+        System.arraycopy(array, idx, array, idx + 1, array.length - idx - 1);
+    }
 
+    private void shiftLeft(int idx) {
+        System.arraycopy(array, idx + 1, array, idx, array.length - idx - 1);
+    }
 
+    private boolean checkIndex(int idx) {
+        if (idx >= size || idx < 0) {
+            System.out.println("BLA");
+            throw new IndexOutOfBoundsException();
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("{");
+        if (size == 0) {
+            stringBuilder.append("}");
+        } else {
+            for (int i = 0; i < size; i++) {
+                if (i < size - 1) {
+                    stringBuilder.append(array[i] + ", ");
+                } else {
+                    stringBuilder.append(array[i] + "}");
+                }
+            }
+        }
+        return stringBuilder.toString();
     }
 }
