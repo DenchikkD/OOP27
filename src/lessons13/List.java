@@ -69,7 +69,7 @@ public interface List<E> {
 
     boolean remove(E o);
 
-    void removeIf(Predicate<E> prd);
+    boolean removeIf(Predicate<E> prd);
 
     void forEach(Consumer<E> cons);
 

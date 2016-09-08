@@ -1,7 +1,6 @@
 package lessons13.arrayList;
 
 import com.sun.istack.internal.NotNull;
-import junit.framework.Assert;
 import lessons13.List;
 
 import java.util.Arrays;
@@ -87,10 +86,9 @@ public class ArrayList<T> implements List<T> {
 
     @Override
     public boolean remove(T o) {
-
         if (!isEmpty()) {
             for (int i = 0; i < size; i++) {
-                if (array[i].equals(o)) {
+                if ((array[i] != null && array[i].equals(o)) || array[i] == null) {
                     shiftLeft(i);
                     size--;
                     return true;
@@ -101,12 +99,22 @@ public class ArrayList<T> implements List<T> {
     }
 
     @Override
-    public void removeIf(Predicate pred) {
-
+    public boolean removeIf(Predicate<T> pred) {
+        boolean ifDell = false;
+        for (int i = 0; i < size; i++) {
+            if (pred.test(array[i])) {
+                remove(i);
+                ifDell = true;
+            }
+        }
+        return ifDell;
     }
 
     @Override
-    public void forEach(Consumer cons) {
+    public void forEach(Consumer<T> cons) {
+        for (int i = 0; i < size; i++) {
+            cons.accept(array[i]);
+        }
 
     }
 

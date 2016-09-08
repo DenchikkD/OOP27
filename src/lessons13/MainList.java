@@ -9,6 +9,18 @@ public class MainList {
 
     public static void main(String[] args) {
 
+        java.util.ArrayList<Integer> arrayListq = new java.util.ArrayList<>();
+//        arrayListq.add(1);
+//        arrayListq.add(15);
+//        arrayListq.add(12);
+//        arrayListq.add(1);
+//        arrayListq.add(13);
+//        System.out.println(arrayListq);
+//        System.out.println(arrayListq.removeIf(integer -> integer < 10));
+//
+//        System.out.println(arrayListq);
+
+
         ArrayList<Integer> arrayList = new ArrayList<>(2);
         System.out.println(arrayList.size());
         arrayList.add(3);
@@ -24,6 +36,16 @@ public class MainList {
         System.out.println(arrayList);
         System.out.println(arrayList.remove(4));
         System.out.println(arrayList);
+        arrayList.forEach((e) -> System.out.print(e + " "));
+        arrayList.add(null);
+        System.out.println();
+        System.out.println(arrayList);
+        System.out.println(arrayList.remove(null));
+        System.out.println(arrayList);
+
+        System.out.println(arrayList.removeIf((e) -> e.equals(5)));
+//        arrayList.forEach((e) -> System.out.print(e + " "));
+
 
     }
 }
