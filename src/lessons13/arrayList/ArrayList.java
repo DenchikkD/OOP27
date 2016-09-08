@@ -104,6 +104,7 @@ public class ArrayList<T> implements List<T> {
         for (int i = 0; i < size; i++) {
             if (pred.test(array[i])) {
                 remove(i);
+                i--;
                 ifDell = true;
             }
         }
@@ -149,10 +150,7 @@ public class ArrayList<T> implements List<T> {
 
     @Override
     public boolean contains(T o) {
-        if (indexOf(o) >= 0) {
-            return true;
-        }
-        return false;
+        return indexOf(o) >= 0;
     }
 
     @Override
@@ -204,9 +202,8 @@ public class ArrayList<T> implements List<T> {
     }
 
     private boolean checkIndex(int idx) {
-        if (idx >= size || idx < 0) {
-            System.out.println("BLA");
-            throw new IndexOutOfBoundsException();
+        if (idx > size || idx < 0) {
+            throw new IndexOutOfBoundsException("BLA");
         }
         return true;
     }

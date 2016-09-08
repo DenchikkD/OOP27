@@ -41,7 +41,9 @@ public class MainList {
         System.out.println();
         System.out.println(arrayList);
         System.out.println(arrayList.remove(null));
+        arrayList.add(4,98);
         System.out.println(arrayList);
+        System.out.println(arrayList.get(5));
 
         System.out.println(arrayList.removeIf((e) -> e.equals(5)));
 //        arrayList.forEach((e) -> System.out.print(e + " "));
