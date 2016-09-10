@@ -14,6 +14,7 @@ import java.util.function.Predicate;
  */
 public class ArrayList<T> implements List<T> {
 
+    private static final int NOMINAL_CAPACITY = 10;
     private int maxSize;
     private T[] array;
     private int size;
@@ -25,8 +26,7 @@ public class ArrayList<T> implements List<T> {
     }
 
     public ArrayList() {
-        maxSize = 10;
-        array = (T[]) new Object[maxSize];
+        array = (T[]) new Object[NOMINAL_CAPACITY];
         size = 0;
     }
 
@@ -62,8 +62,11 @@ public class ArrayList<T> implements List<T> {
 
     @Override
     public T get(int idx) {
-        checkIndex(idx);
-        return array[idx];
+        if (!isEmpty()) {
+            checkIndex(idx);
+            return array[idx];
+        }
+        throw new IndexOutOfBoundsException("size: " + size + " idx: " + idx);
 
     }
 
@@ -120,8 +123,11 @@ public class ArrayList<T> implements List<T> {
     }
 
     @Override
-    public T reduce(BiFunction func, Object initial) {
-        return null;
+    public T reduce(BiFunction<T, T, T> func, T initial) {
+        for (int i = 0; i < size; i++) {
+            initial = func.apply(initial, array[i]);
+        }
+        return initial;
     }
 
     @Override
@@ -154,22 +160,35 @@ public class ArrayList<T> implements List<T> {
     }
 
     @Override
-    public List subList(int fromIdx, int toIdx) {
-        return null;
+    public List<T> subList(int fromIdx, int toIdx) {
+        checkIndex(fromIdx);
+        checkIndex(toIdx);
+        List<T> result = new ArrayList<>();
+        for (int i = fromIdx; i < toIdx; i++) {
+            result.add(array[i]);
+        }
+        return result;
     }
 
     @Override
     public void clear() {
-
+        array = (T[]) new Object[NOMINAL_CAPACITY];
+        size = 0;
     }
 
     @Override
-    public boolean addAll(List list) {
-        return false;
+    public boolean addAll(List<? extends T> list) {
+        return addAll(this.size, list);
     }
 
     @Override
-    public boolean addAll(int idx, List list) {
+    public boolean addAll(int idx, List<? extends T> list) {
+        if (!list.isEmpty()) {
+            for (int i = 0; i < list.size(); i++) {
+                add(idx, list.get(i));
+            }
+            return true;
+        }
         return false;
     }
 
@@ -184,8 +203,12 @@ public class ArrayList<T> implements List<T> {
     }
 
     @Override
-    public List map(Function func) {
-        return null;
+    public <U> List<U> map(Function<T, U> func) {
+        ArrayList<U> result = new ArrayList<>();
+        for (int i = 0; i < size(); i++) {
+            result.add(func.apply(array[i]));
+        }
+        return result;
     }
 
     private T[] newArray(T[] array) {
