@@ -2,6 +2,7 @@ package lessons13.arrayList;
 
 import lessons13.List;
 
+import java.util.Iterator;
 import java.util.function.BiFunction;
 import java.util.function.Consumer;
 import java.util.function.Function;
@@ -63,7 +64,12 @@ public class LinkedList<E> implements List<E> {
     }
 
     @Override
-    public void forEach(Consumer<E> cons) {
+    public Iterator<E> iterator() {
+        return new ListIterator<E>(this);
+    }
+
+    @Override
+    public void forEach(Consumer<? super E> cons) {
 
     }
 

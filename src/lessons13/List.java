@@ -12,7 +12,7 @@ import java.util.function.Predicate;
  * Рализовать в структурах ArrayList(На основе массива) и LinkedList(Дважды связный список)
  * Допускается и приветствуется обобщенная скелетная реализация в абстрактном классе по усмотрению автора
  * */
-public interface List<E> {
+public interface List<E> extends Iterable<E> {
 
 
 
@@ -71,7 +71,7 @@ public interface List<E> {
 
     boolean removeIf(Predicate<E> prd);
 
-    void forEach(Consumer<E> cons);
+    void forEach(Consumer<?super E> cons);
 
     <T> List<T> map(Function<E, T> func);
 

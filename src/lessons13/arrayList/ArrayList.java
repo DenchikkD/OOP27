@@ -4,6 +4,7 @@ import com.sun.istack.internal.NotNull;
 import lessons13.List;
 
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.function.BiFunction;
 import java.util.function.Consumer;
 import java.util.function.Function;
@@ -30,10 +31,6 @@ public class ArrayList<T> implements List<T> {
         size = 0;
     }
 
-    public ArrayList(@NotNull java.util.List<T> addList) {
-        this.array = array;
-
-    }
 
     @Override
     public void add(T element) {
@@ -115,7 +112,7 @@ public class ArrayList<T> implements List<T> {
     }
 
     @Override
-    public void forEach(Consumer<T> cons) {
+    public void forEach(Consumer<? super T> cons) {
         for (int i = 0; i < size; i++) {
             cons.accept(array[i]);
         }
@@ -247,5 +244,49 @@ public class ArrayList<T> implements List<T> {
             }
         }
         return stringBuilder.toString();
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+
+//        Iterator<T> iter = new Iterator<T>() {
+//            int count = 0;
+//
+//            @Override
+//            public boolean hasNext() {
+//
+//                return count != size();
+//            }
+//
+//            @Override
+//            public T next() {
+//
+//                T val = array[count];
+//                System.out.println("count " + count + " " + array[count]);
+//                count++;
+//                return val;
+//            }
+//        };
+        return new ListIterator<T>(this);
+    }
+}
+
+class ListIterator<T> implements Iterator<T> {
+    private List<T> arrayList;
+
+    public ListIterator(List<T> arrayList) {
+        this.arrayList = arrayList;
+    }
+
+    int count = 0;
+
+    @Override
+    public boolean hasNext() {
+        return count != arrayList.size();
+    }
+
+    @Override
+    public T next() {
+        return arrayList.get(count++);
     }
 }
