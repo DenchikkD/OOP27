@@ -193,6 +193,7 @@ public class LinkedList<E> implements List<E> {
             initial = func.apply(initial, nd.element);
         }
         return initial;
+
     }
 
     @Override
