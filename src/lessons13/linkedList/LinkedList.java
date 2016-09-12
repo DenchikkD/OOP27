@@ -1,5 +1,6 @@
 package lessons13.linkedList;
 
+import lessons13.AbstracrList;
 import lessons13.List;
 
 
@@ -12,7 +13,7 @@ import java.util.function.Predicate;
 /**
  * Created by Denni on 08.09.2016.
  */
-public class LinkedList<E> implements List<E> {
+public class LinkedList<E> extends AbstracrList<E> implements List<E> {
 
     private Node<E> head;
     private Node<E> tail;
@@ -198,7 +199,7 @@ public class LinkedList<E> implements List<E> {
 
     @Override
     public int indexOf(E o) {
-        int count =0;
+
 
         return 0;
     }
