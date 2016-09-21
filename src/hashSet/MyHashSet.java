@@ -13,7 +13,6 @@ public class MyHashSet<T> extends MyAbstarctSet<T> implements MySet<T> {
 
     public MyHashSet() {
         size = 0;
-//        arr=new Node<T>[DEFAULT_INITIAL_CAPACITY];
         arr = (Node<T>[]) new Node[DEFAULT_INITIAL_CAPACITY];
 
     }
@@ -63,23 +62,17 @@ public class MyHashSet<T> extends MyAbstarctSet<T> implements MySet<T> {
                 if (arr[i] != null) {
                     Node<T> position = arr[i];
                     while (position != null) {
-                        if (builder.length()==1) {
+                        if (builder.length() == 1) {
                             builder.append(position.element);
-//                            System.out.println(position.element);
                         } else {
                             builder.append(", ").append(position.element);
-//                            System.out.println(position.element + ", ");
                         }
                         position = position.next;
                     }
                 }
             }
         }
-
         builder.append("]");
-//            System.out.println("]");
-
-
         return builder.toString();
     }
 
