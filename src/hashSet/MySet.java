@@ -9,7 +9,7 @@ public interface MySet<T> {
 
     public int size();
 
-    public boolean contains();
+    public boolean contains(T e);
 
     public boolean isEmpty();
 

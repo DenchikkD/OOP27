@@ -20,27 +20,41 @@ public class MyHashSet<T> extends MyAbstarctSet<T> implements MySet<T> {
     @Override
     public boolean add(T e) {
         Node<T> node = new Node<>(e);
-        int idx = e.hashCode() % arr.length;
+        int idx = hash(e);
         if (arr[idx] == null) {
-//            System.out.println(idx+" "+arr[idx]);
             arr[idx] = node;
             size++;
-//            System.out.println(idx+" "+arr[idx]);
-
         } else {
-
             Node<T> position = arr[idx];
-            while (position.next != null && !position.element.equals(node.element)) {
+            while (position.next != null && !checkEquality(position, e)) {
                 position = position.next;
             }
-            if (position.element.equals(node.element)) {
-                position.element = node.element;
+            if (checkEquality(position, e)) {
+                return false;
             } else {
                 position.next = node;
                 size++;
             }
         }
+        return true;
+    }
+
+    private boolean checkEquality(Node<T> position, T element) {
+        if (position.element == null || element == null) {
+            if (position.element == element) {
+                return true;
+            }
+        } else {
+            if (position.element.equals(element)) {
+                return true;
+            }
+        }
         return false;
+    }
+
+    private int hash(T e) {
+
+        return (e == null) ? 0 : e.hashCode() % arr.length;
     }
 
     @Override
@@ -49,9 +63,22 @@ public class MyHashSet<T> extends MyAbstarctSet<T> implements MySet<T> {
     }
 
     @Override
-    public boolean contains() {
+    public boolean contains(T e) {
+        if (!isEmpty()) {
+            int idx = hash(e);
+            if (idx >= 0 && idx < arr.length) {
+                Node<T> position = arr[idx];
+                while (position!=null&&position.next != null) {
+                    if (checkEquality(position, e)) {
+                        return true;
+                    }
+                    position = position.next;
+                }
+            }
+        }
         return false;
     }
+
 
     @Override
     public String toString() {
@@ -75,6 +102,7 @@ public class MyHashSet<T> extends MyAbstarctSet<T> implements MySet<T> {
         builder.append("]");
         return builder.toString();
     }
+
 
     private static class Node<E> {
 
