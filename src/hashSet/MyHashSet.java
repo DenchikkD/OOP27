@@ -1,17 +1,22 @@
 package hashSet;
 
+
+import java.util.ArrayList;
+import java.util.Arrays;
+
 /**
  * Created by Iliren on 21.09.2016.
  */
 public class MyHashSet<T> extends MyAbstarctSet<T> implements MySet<T> {
 
-    static final int DEFAULT_INITIAL_CAPACITY = 16;
+    static final int DEFAULT_INITIAL_CAPACITY = 5;
     static final float DEFAULT_LOAD_FACTOR = 0.75f;
-
+    private int count;
     private int size;
     private Node<T>[] arr;
 
     public MyHashSet() {
+        count = 0;
         size = 0;
         arr = (Node<T>[]) new Node[DEFAULT_INITIAL_CAPACITY];
 
@@ -19,9 +24,14 @@ public class MyHashSet<T> extends MyAbstarctSet<T> implements MySet<T> {
 
     @Override
     public boolean add(T e) {
+        if (count >= arr.length * DEFAULT_LOAD_FACTOR) {
+            newArray(arr);
+            System.out.println(arr.length);
+        }
         Node<T> node = new Node<>(e);
         int idx = hash(e);
         if (arr[idx] == null) {
+            count++;
             arr[idx] = node;
             size++;
         } else {
@@ -37,6 +47,13 @@ public class MyHashSet<T> extends MyAbstarctSet<T> implements MySet<T> {
             }
         }
         return true;
+    }
+
+    private void newArray(Node<T>[] array) {
+        Node<T>[] newArr =(Node<T>[]) new Node[array.length*2];
+
+
+
     }
 
     private boolean checkEquality(Node<T> position, T element) {
@@ -68,7 +85,7 @@ public class MyHashSet<T> extends MyAbstarctSet<T> implements MySet<T> {
             int idx = hash(e);
             if (idx >= 0 && idx < arr.length) {
                 Node<T> position = arr[idx];
-                while (position!=null&&position.next != null) {
+                while (position != null && position.next != null) {
                     if (checkEquality(position, e)) {
                         return true;
                     }
@@ -86,6 +103,7 @@ public class MyHashSet<T> extends MyAbstarctSet<T> implements MySet<T> {
         builder.append("[");
         if (size() != 0) {
             for (int i = 0; i < arr.length; i++) {
+                builder.append("OPOPOPOPOPOPOPOPOPOPOPOPOPOPOPOPOPOPOPOPOPOP").append(System.lineSeparator());
                 if (arr[i] != null) {
                     Node<T> position = arr[i];
                     while (position != null) {
