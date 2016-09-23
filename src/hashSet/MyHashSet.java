@@ -24,15 +24,22 @@ public class MyHashSet<T> extends MyAbstarctSet<T> implements MySet<T> {
 
     @Override
     public boolean add(T e) {
+        return add(arr, e);
+
+    }
+
+    private boolean add(Node<T>[] arr, T e) {
         if (count >= arr.length * DEFAULT_LOAD_FACTOR) {
-            newArray(arr);
+           arr = newArray(arr);
             System.out.println(arr.length);
         }
         Node<T> node = new Node<>(e);
+        node.next = null;
         int idx = hash(e);
         if (arr[idx] == null) {
             count++;
             arr[idx] = node;
+
             size++;
         } else {
             Node<T> position = arr[idx];
@@ -43,17 +50,38 @@ public class MyHashSet<T> extends MyAbstarctSet<T> implements MySet<T> {
                 return false;
             } else {
                 position.next = node;
+
                 size++;
             }
         }
         return true;
     }
 
-    private void newArray(Node<T>[] array) {
-        Node<T>[] newArr =(Node<T>[]) new Node[array.length*2];
+    private Node<T>[] newArray(Node<T>[] oldAarray) {
+        Node<T>[] newArr = (Node<T>[]) new Node[oldAarray.length * 2];
 
-
-
+        for (int i = 0; i < oldAarray.length; i++) {
+            if (oldAarray[i] != null) {
+                Node<T> position = oldAarray[i];
+                Node<T> oldposition = position;
+                while (position != null) {
+                    add(newArr,oldposition.element);
+//                    int idx = hash(position.element);
+//                    if (newArr[idx] == null) {
+//                        newArr[idx] = oldposition;
+//                    } else {
+//                        Node<T> newArrPosition = newArr[idx];
+//                        while (newArrPosition.next != null) {
+//                            newArrPosition = newArrPosition.next;
+//                        }
+//                        newArrPosition.next = oldposition;
+//                    }
+                    position = position.next;
+                    oldposition.next = null;
+                }
+            }
+        }
+        return newArr;
     }
 
     private boolean checkEquality(Node<T> position, T element) {

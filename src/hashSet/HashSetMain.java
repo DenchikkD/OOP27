@@ -9,10 +9,16 @@ import java.util.HashSet;
  */
 public class HashSetMain {
     public static void main(String[] args) {
-        HashSet<Integer> hashSet = new HashSet<>();
-
+//        HashSet<Integer> hashSet = new HashSet<>();
+//
 //        System.out.println(hashSet.add(null));
 //        System.out.println(hashSet.add(null));
+//        System.out.println(hashSet);
+//        for (Integer i:hashSet
+//             ) {
+//            System.out.println(i);
+//
+//        }
 //        Integer a=null;
 //        Integer b=null;
 //        System.out.println(a.equals(b));
@@ -20,7 +26,7 @@ public class HashSetMain {
 
         MyHashSet<Integer> myHashSet = new MyHashSet<>();
         System.out.println(myHashSet.size());
-        for (int i = 0; i < 50; i++) {
+        for (int i = 0; i < 500; i++) {
 //            System.out.println(i);
             Integer a =(int) (Math.random() * 5000);
 //            System.out.println(a);
