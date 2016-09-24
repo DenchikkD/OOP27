@@ -40,6 +40,7 @@ public class MyHashSet<T> extends MyAbstarctSet<T> implements MySet<T> {
                 count++;
                 arr[idx] = node;
 
+
                 size++;
             } else {
                 Node<T> position = arr[idx];

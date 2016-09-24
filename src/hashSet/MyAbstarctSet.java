@@ -5,6 +5,7 @@ package hashSet;
  */
 public abstract class MyAbstarctSet<T> implements MySet<T> {
 
+
     @Override
     public boolean isEmpty() {
         return size() == 0;

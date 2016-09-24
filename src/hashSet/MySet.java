@@ -11,6 +11,7 @@ public interface MySet<T> {
 
     public boolean contains(T e);
 
+
     public boolean isEmpty();
 
 
