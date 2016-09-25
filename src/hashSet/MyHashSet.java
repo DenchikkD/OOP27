@@ -22,52 +22,39 @@ public class MyHashSet<T> extends MyAbstarctSet<T> implements MySet<T> {
 
     }
 
+
     @Override
     public boolean add(T e) {
-        return add(this.arr, e);
-
-    }
-
-    private boolean add(Node<T>[] arr, T e) {
-        if (count >= arr.length * DEFAULT_LOAD_FACTOR) {
-           newArray(arr);
-            System.out.println(arr.length);
-        }else {
-            Node<T> node = new Node<>(e);
-            node.next = null;
-            int idx = hash(e);
-            if (arr[idx] == null) {
-                count++;
-                arr[idx] = node;
-
-
-                size++;
+        Node<T> node = new Node<>(e);
+        int idx = hash(e);
+        if (arr[idx] == null) {
+            count++;
+            arr[idx] = node;
+            size++;
+        } else {
+            Node<T> position = arr[idx];
+            while (position.next != null && !checkEquality(position, e)) {
+                position = position.next;
+            }
+            if (checkEquality(position, e)) {
+                return false;
             } else {
-                Node<T> position = arr[idx];
-                while (position.next != null && !checkEquality(position, e)) {
-                    position = position.next;
-                }
-                if (checkEquality(position, e)) {
-                    return false;
-                } else {
-                    position.next = node;
-
-                    size++;
-                }
+                position.next = node;
+                size++;
             }
         }
         return true;
     }
 
     private void newArray(Node<T>[] oldAarray) {
-        Node<T>[] newArr = (Node<T>[]) new Node[(int) (oldAarray.length *1.2)];
+        Node<T>[] newArr = (Node<T>[]) new Node[(int) (oldAarray.length * 1.2)];
 
         for (int i = 0; i < oldAarray.length; i++) {
             if (oldAarray[i] != null) {
                 Node<T> position = oldAarray[i];
                 Node<T> oldposition = position;
                 while (position != null) {
-                    add(newArr,oldposition.element);
+//                    add(newArr, oldposition.element);
 //                    int idx = hash(position.element);
 //                    if (newArr[idx] == null) {
 //                        newArr[idx] = oldposition;
@@ -83,7 +70,7 @@ public class MyHashSet<T> extends MyAbstarctSet<T> implements MySet<T> {
                 }
             }
         }
-        this.arr=newArr;
+        this.arr = newArr;
     }
 
     private boolean checkEquality(Node<T> position, T element) {
@@ -133,7 +120,7 @@ public class MyHashSet<T> extends MyAbstarctSet<T> implements MySet<T> {
         builder.append("[");
         if (size() != 0) {
             for (int i = 0; i < arr.length; i++) {
-                builder.append(System.lineSeparator());
+//                builder.append(System.lineSeparator());
                 if (arr[i] != null) {
                     Node<T> position = arr[i];
                     while (position != null) {

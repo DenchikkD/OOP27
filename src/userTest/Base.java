@@ -1,8 +1,7 @@
 package userTest;
 
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.SyncFailedException;
+import java.io.*;
+import java.util.Scanner;
 
 /**
  * Created by Iliren on 24.09.2016.
@@ -11,6 +10,7 @@ public class Base {
 
     private User[] user = new User[15];
     private FileWriter writer;
+    private FileReader reader;
 
     public Base() throws IOException {
         user[0] = new User("Denis1", "denni", "1111", "25.09.2016");
@@ -21,8 +21,8 @@ public class Base {
         user[5] = new User("Denis6", "denni", "1111", "25.09.2016");
     }
 
-    void usersToFile(String fileName) throws IOException {
-        writer = new FileWriter("D:\\progects/OOP27/FileDirectory/"+fileName);
+    public void usersToFile(String fileName) throws IOException {
+        writer = new FileWriter("D:\\projects/OOP27/FileDirectory" + fileName);
         StringBuilder builder = new StringBuilder();
         int count = 0;
         while (user[count] != null) {
@@ -32,7 +32,22 @@ public class Base {
         }
         writer.write(builder.toString());
         writer.flush();
+        writer.close();
     }
 
+    public User[] usersFromFile(String fileName) throws FileNotFoundException {
+        User[] usersFromFile = new User[15];
+        reader = new FileReader("D:\\projects/OOP27/FileDirectory/" + fileName);
+        Scanner scn = new Scanner(reader);
+        int count = 0;
+        while (scn.hasNextLine()) {
+            String str = scn.nextLine();
+
+            String[] strings = str.split(" ");
+                usersFromFile[count] = new User(strings[0], strings[1], strings[2], strings[3]);
+            count++;
+        }
+        return usersFromFile;
+    }
 
 }

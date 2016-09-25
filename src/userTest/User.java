@@ -32,4 +32,14 @@ public class User {
     public String getDateOfExpire() {
         return dateOfExpire;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "name= ' " + name + '\'' +
+                ", login= '" + login + '\'' +
+                ", pass= '" + pass + '\'' +
+                ", dateOfExpire= '" + dateOfExpire + '\''+
+                '}' +"\n";
+    }
 }

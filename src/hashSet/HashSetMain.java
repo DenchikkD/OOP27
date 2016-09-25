@@ -29,9 +29,9 @@ public class HashSetMain {
         System.out.println(myHashSet.size());
         for (int i = 0; i < 50; i++) {
 //            System.out.println(i);
-            Integer a =(int) (Math.random() * 50000);
+//            Integer a =(int) (Math.random() * 50000);
 //            System.out.println(a);
-            System.out.println(myHashSet.add(a));
+            System.out.println(myHashSet.add(i));
         }
         System.out.println(myHashSet);
         System.out.println(myHashSet.size());
