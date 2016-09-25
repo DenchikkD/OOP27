@@ -9,14 +9,12 @@ import java.util.Arrays;
  */
 public class MyHashSet<T> extends MyAbstarctSet<T> implements MySet<T> {
 
-    static final int DEFAULT_INITIAL_CAPACITY = 5;
+    static final int DEFAULT_INITIAL_CAPACITY = 16;
     static final float DEFAULT_LOAD_FACTOR = 0.75f;
-    private int count;
     private int size;
     private Node<T>[] arr;
 
     public MyHashSet() {
-        count = 0;
         size = 0;
         arr = (Node<T>[]) new Node[DEFAULT_INITIAL_CAPACITY];
 
@@ -26,9 +24,11 @@ public class MyHashSet<T> extends MyAbstarctSet<T> implements MySet<T> {
     @Override
     public boolean add(T e) {
         Node<T> node = new Node<>(e);
+        if (size() > arr.length * DEFAULT_LOAD_FACTOR) {
+            arr = newArray(arr);
+        }
         int idx = hash(e);
         if (arr[idx] == null) {
-            count++;
             arr[idx] = node;
             size++;
         } else {
@@ -46,31 +46,31 @@ public class MyHashSet<T> extends MyAbstarctSet<T> implements MySet<T> {
         return true;
     }
 
-    private void newArray(Node<T>[] oldAarray) {
-        Node<T>[] newArr = (Node<T>[]) new Node[(int) (oldAarray.length * 1.2)];
+    private Node<T>[] newArray(Node<T>[] oldAarray) {
+        Node<T>[] newArr = (Node<T>[]) new Node[(int) (oldAarray.length * 2)];
 
         for (int i = 0; i < oldAarray.length; i++) {
             if (oldAarray[i] != null) {
                 Node<T> position = oldAarray[i];
-                Node<T> oldposition = position;
+                oldAarray[i] = null;
                 while (position != null) {
-//                    add(newArr, oldposition.element);
-//                    int idx = hash(position.element);
-//                    if (newArr[idx] == null) {
-//                        newArr[idx] = oldposition;
-//                    } else {
-//                        Node<T> newArrPosition = newArr[idx];
-//                        while (newArrPosition.next != null) {
-//                            newArrPosition = newArrPosition.next;
-//                        }
-//                        newArrPosition.next = oldposition;
-//                    }
+                    int idx = hash(position.element);
+                    if (newArr[idx] == null) {
+                        newArr[idx] = position;
+                    } else {
+                        Node<T> newArrPosition = newArr[idx];
+                        while (newArrPosition.next != null) {
+                            newArrPosition = newArrPosition.next;
+                        }
+                        newArrPosition.next = position;
+                    }
+                    Node<T> oldPosition = position;
                     position = position.next;
-//                    oldposition.next = null;
+                    oldPosition.next = null;
                 }
             }
         }
-        this.arr = newArr;
+        return newArr;
     }
 
     private boolean checkEquality(Node<T> position, T element) {
