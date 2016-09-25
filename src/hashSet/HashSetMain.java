@@ -2,10 +2,7 @@ package hashSet;
 
 import com.sun.org.apache.xerces.internal.impl.xpath.regex.Match;
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashSet;
+import java.util.*;
 
 /**
  * Created by Iliren on 21.09.2016.
@@ -30,20 +27,29 @@ public class HashSetMain {
 
         MyHashSet<Integer> myHashSet = new MyHashSet<>();
         System.out.println(myHashSet.size());
-        int count = 0;
-//        System.out.println(myHashSet.add(null));
-        for (int i = 0; i < 50; i++) {
-            if (myHashSet.add((int) (Math.random() * 50000))) {
-                count++;
+
+        System.out.println(myHashSet.add(null));
+        long time1 = 0;
+        long time2 = 0;
+
+
+        time1 = System.nanoTime();
+        for (int i = 0; i < 5000000; i++) {
+            if (myHashSet.add((int) (Math.random() * 5000000))) {
             }
-            System.out.println(count);
+
         }
-        System.out.println(myHashSet);
-        System.out.println(myHashSet.size());
-        System.out.println(myHashSet.size());
-        System.out.println(myHashSet.size());
-        System.out.println(myHashSet.size());
-        System.out.println(myHashSet.size());
+        time2 = System.nanoTime();
+        System.out.println(time2-time1);
+        ArrayList<Integer> arrayList = new ArrayList<>();
+        time1=System.nanoTime();
+        for (int i = 0; i < 5000000; i++) {
+            if (arrayList.add((int) (Math.random() * 5000000))) {
+            }
+
+        }
+        time2=System.nanoTime();
+        System.out.println(time2-time1);
 
 //        System.out.println(myHashSet.add(null));
 //        System.out.println(myHashSet.add(5));

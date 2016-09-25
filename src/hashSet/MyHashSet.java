@@ -70,6 +70,7 @@ public class MyHashSet<T> extends MyAbstarctSet<T> implements MySet<T> {
                 }
             }
         }
+
         return newArr;
     }
 
@@ -120,7 +121,7 @@ public class MyHashSet<T> extends MyAbstarctSet<T> implements MySet<T> {
         builder.append("[");
         if (size() != 0) {
             for (int i = 0; i < arr.length; i++) {
-//                builder.append(System.lineSeparator());
+                builder.append(System.lineSeparator());
                 if (arr[i] != null) {
                     Node<T> position = arr[i];
                     while (position != null) {
