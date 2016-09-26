@@ -8,26 +8,41 @@ import java.util.Scanner;
  */
 public class Base {
 
-    private User[] user = new User[15];
+    private User[] users = new User[15];
     private FileWriter writer;
     private FileReader reader;
+    private int count = 0;
 
-    public Base() throws IOException {
-        user[0] = new User("Denis1", "denni", "1111", "25.09.2016");
-        user[1] = new User("Denis2", "denni", "1111", "25.09.2016");
-        user[2] = new User("Denis3", "denni", "1111", "25.09.2016");
-        user[3] = new User("Denis4", "denni", "1111", "25.09.2016");
-        user[4] = new User("Denis5", "denni", "1111", "25.09.2016");
-        user[5] = new User("Denis6", "denni", "1111", "25.09.2016");
+
+    public void addToArray(User user) {
+        System.out.println();
+        System.out.println("____________________");
+
+        boolean flag = true;
+        for (int i = 0; i <= count; i++) {
+            if (user.equals(users[i])) {
+                flag = false;
+            }
+        }
+        if (flag) {
+            users[count] = user;
+            System.out.println("++++++++");
+            count++;
+        } else {
+            System.out.println("Такий користувач уже існує!!!");
+        }
     }
 
     public void usersToFile(String fileName) throws IOException {
         writer = new FileWriter("D:\\projects/OOP27/FileDirectory" + fileName);
         StringBuilder builder = new StringBuilder();
         int count = 0;
-        while (user[count] != null) {
-            builder.append(user[count].getName()).append(" ").append(user[count].getLogin()).append(" ").
-                    append(user[count].getPass()).append(" ").append(user[count].getDateOfExpire()).append(System.lineSeparator());
+
+        while (users[count] != null) {
+
+            builder.append(users[count].getName()).append(" ").append(users[count].getLogin()).append(" ").
+                    append(users[count].getPass()).append(" ").append(users[count].getDateOfExpire()).append(System.lineSeparator());
+
             count++;
         }
         writer.write(builder.toString());
@@ -44,7 +59,7 @@ public class Base {
             String str = scn.nextLine();
 
             String[] strings = str.split(" ");
-                usersFromFile[count] = new User(strings[0], strings[1], strings[2], strings[3]);
+            usersFromFile[count] = new User(strings[0], strings[1], strings[2], strings[3]);
             count++;
         }
         return usersFromFile;
