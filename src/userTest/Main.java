@@ -11,8 +11,10 @@ public class Main {
         Base base = new Base();
 
         base.usersToFile("/users.txt");
-
+char[]ch={'/'};
         System.out.println(Arrays.toString(base.usersFromFile("users.txt")));
-
+//        System.out.println(Integer.valueOf(String.valueOf(ch)));
     }
+
+
 }
