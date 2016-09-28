@@ -16,6 +16,7 @@ public class Main {
         base.addToArray(new User("Denis5", "denni", "1111", "25.09.2016"));
         base.addToArray(new User("Denis6", "denni", "1111", "25.09.2016"));
         base.addToArray(new User("Denis1", "denni", "1111", "25.09.2016"));
+        base.addToArray(new User("Denis1", "denni1", "1111", "25.09.2016"));
         base.addToArray(new User("Denis3", "denni", "1111", "25.09.2016"));
 
         base.usersToFile("/users.txt");

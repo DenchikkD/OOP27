@@ -1,76 +1,70 @@
 package calculator;
 
+import enums.SymbolType;
+
 /**
  * Created by Denni on 9/24/2016.
  */
 public class MyCalc extends AbstractCalc {
     public MyCalc() {
+        SymbolType.ACE.name();
 
     }
 
     @Override
     public void inChar(char p) {
         switch (p) {
-            case '1':
+            default:
                 generateValue(p);
-                break;
-            case '2':
-                generateValue(p);
-                break;
-            case '3':
-                generateValue(p);
-                break;
-            case '4':
-                generateValue(p);
-                break;
-            case '5':
-                generateValue(p);
-                break;
-            case '6':
-                generateValue(p);
-                break;
-            case '7':
-                generateValue(p);
-                break;
-            case '8':
-                generateValue(p);
-                break;
-            case '9':
-                generateValue(p);
-                break;
-            case '0':
-                generateValue(p);
+                printResult();
                 break;
             case '/':
                 temp = Integer.parseInt(result);
+                printResult();
                 result = "";
                 operation = '/';
                 break;
             case '*':
                 temp = Integer.parseInt(result);
+                printResult();
                 result = "";
                 operation = '*';
                 break;
             case '-':
                 temp = Integer.parseInt(result);
+                printResult();
                 result = "";
                 operation = '-';
                 break;
             case '+':
                 temp = Integer.parseInt(result);
+                printResult();
                 result = "";
                 operation = '+';
                 break;
             case '=':
                 doResult();
+                printResult();
                 break;
         }
 
     }
 
     private void generateValue(char p) {
-        result += p;
+        if (result.length() == 0) {
+            result += p;
+        } else {
+            if (p == '0' && result.equals("0")) {
+                result = "0";
+            } else if (p == '0' && result.length() >= 1 && !result.equals("0")) {
+                result += p;
+            } else if (p != '0' && result.length() == 1 && result.equals("0")) {
+                result = "" + p;
 
+            } else {
+                result += p;
+            }
+        }
     }
 
 
